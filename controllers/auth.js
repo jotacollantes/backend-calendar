@@ -96,10 +96,13 @@ const loginUsuario=async(req,res=response)=> {
 
 const revalidarToken=async(req,res=response)=> {
 
+     const {uid,name}=req
     //*Generamos un nuevo token:
-    const token=await generaJwt(req.id,req.name)
+    const token=await generaJwt(uid,name)
     return res.json({
         ok:true,
+        uid,
+        name,
         token
     })
 }

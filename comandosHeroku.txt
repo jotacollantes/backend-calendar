@@ -1,0 +1,8 @@
+heroku --version
+brew tap heroku/brew && brew install heroku\n
+heroku --version
+heroku login
+heroku git:remote -a jota-mern-calendar
+git remote -v
+git push heroku main
+heroku logs -n 10 --tail

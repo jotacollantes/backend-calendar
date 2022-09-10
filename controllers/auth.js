@@ -58,8 +58,9 @@ const loginUsuario=async(req,res=response)=> {
      try {
  
      const usuario= await Usuario.findOne({email: email})
-     
+         console.log('Usuario:',usuario)
         if(!usuario){
+            console.log('Usuario y password no son validos')
             return res.status(400).json({
                 ok:false,
                 msg: "Password o contraseña no son validas",
@@ -70,14 +71,15 @@ const loginUsuario=async(req,res=response)=> {
     const validatePassword =bcrypt.compareSync(password,usuario.password)//* Devuelve true o false
         if (!validatePassword)
         {
+            console.log('Contraseña invalida')
             return res.status(400).json({
                 ok:false,
                 msg: "Contraseña es invalida",
                 })
         }
         
-        //console.log('id: ',usuario.id)
-        const token=await generaJwt(usuario._id,usuario.name)
+        console.log('Entro al login id: ',usuario.id)
+        const token=await generaJwt(usuario.id,usuario.name)
         return res.status(201).json({
             ok:true,
             uid: usuario.id,

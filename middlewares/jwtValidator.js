@@ -3,15 +3,16 @@ const jwt= require('jsonwebtoken')
 
 const jwtValidator=(req=request,res=response,next)=>{
     const token=req.header('x-token')
-    //console.log(token)
+    console.log('Token Validator: ',token)
     if(!token){
         return res.status(401).json({
             ok:false,
             msg: "No hay token en el header"
         })
     }
-
+    
     try {
+        
         //*Desestructuramos el payload
         const {uid,name}=jwt.verify(token,process.env.SECRET_JWT_SEED)
         //console.log(payload)

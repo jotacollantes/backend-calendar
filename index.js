@@ -31,10 +31,13 @@ app.use('/api/auth',require('./routes/auth'))
 //*Rutas CRUD
 app.use('/api/events',require('./routes/events'))
 
+
+//*Cualquier ruta que no sean las de arriba va a servir el index.html donde esta la aplicacion de react.
 app.get('*',(req,res)=>{
+    
     res.sendFile(__dirname+'/public/index.html');
 })
-
+//console.log(__dirname)
 
 
 //*Escuchar peticiones

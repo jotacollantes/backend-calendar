@@ -31,9 +31,9 @@ app.use('/api/auth',require('./routes/auth'))
 //*Rutas CRUD
 app.use('/api/events',require('./routes/events'))
 
-app.get('*',(req,res))=>{
+app.get('*',(req,res)=>{
     res.sendFile(__dirname+'/public/index.html');
-}
+})
 
 
 

@@ -82,7 +82,8 @@ const loginUsuario=async(req,res=response)=> {
         const token=await generaJwt(usuario.id,usuario.name)
         return res.status(201).json({
             ok:true,
-            uid: usuario.id,
+            //uid: usuario.id,
+            _id: usuario.id,
             name: usuario.name,
             token: token
             })
